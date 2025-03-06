@@ -153,8 +153,13 @@ const Navigation = () => {
                             onClick={toggleDrawer(false)}
                             sx={{
                                 borderRadius: "50%",
-                                color: "#000",
-                                background: "#e6b600",
+                                color: "#fff",
+                                background: "#003361",
+                                border:"1px solid #003361",
+                                "&:hover" :{
+                                    backgroundColor: "#fff",
+                                    color: "#003361",
+                                }
                             }}
                         >
                             <CloseIcon/>
