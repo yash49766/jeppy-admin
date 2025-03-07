@@ -22,10 +22,8 @@ const Navigation = () => {
     };
 
     const navLinks = [
-        {label: "Products", href:"/product"},
-        {label: "R & D", href: "/randd"},
+        {label: "Products", href:"/"},
         {label: "Contact", href: "/contact"},
-        {label: "Insight", href: "/insight"},
     ];
 
     return (
