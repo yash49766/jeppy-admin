@@ -33,7 +33,7 @@ const Addproducts = ({selectedProduct, onSave}) => {
                     console.error("Error fetching product:", error);
                 });
         }
-    }, []);
+    }, [id , selectedProduct]);
 
     const handleChange = (e) => {
         setProduct({...product, [e.target.name]: e.target.value});
@@ -90,11 +90,13 @@ const Addproducts = ({selectedProduct, onSave}) => {
                 await axios.put(`https://valin-backend.onrender.com/api/product/${id}`, formData, {
                     headers: {"Content-Type": "multipart/form-data"}
                 });
+                navigate("/");
 
             } else {
                 await axios.post("https://valin-backend.onrender.com/api/product", formData, {
                     headers: {"Content-Type": "multipart/form-data"}
                 });
+                navigate("/")
 
             }
             onSave();
@@ -150,11 +152,11 @@ const Addproducts = ({selectedProduct, onSave}) => {
                             {product.technical_infos.map((info, index) => (
                                 <Grid container spacing={2} key={index}>
                                     <Grid item xs={5}>
-                                        <TextField fullWidth label="Name" value={info.name}
+                                        <TextField fullWidth label="Name" value={info.name} InputLabelProps={{ shrink: true }}
                                                    onChange={(e) => handleTechnicalInfoChange(index, "name", e.target.value)}/>
                                     </Grid>
                                     <Grid item xs={5}>
-                                        <TextField fullWidth label="Value" type="number" value={info.value}
+                                        <TextField fullWidth label="Value" type="number" value={info.value} InputLabelProps={{ shrink: true }}
                                                    onChange={(e) => handleTechnicalInfoChange(index, "value", e.target.value)}/>
                                     </Grid>
                                 </Grid>
@@ -270,7 +272,6 @@ const Addproducts = ({selectedProduct, onSave}) => {
 
                     <Box sx={{textAlign: "center", mt: 4}}>
                         <Button type="submit" variant="contained"
-                                onClick={() => navigate("/")}
                                 sx={{backgroundColor: "#244E54"}}>
                             {id ? "Update Product" : "Add Product"}
                         </Button>
